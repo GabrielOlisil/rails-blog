@@ -1,0 +1,28 @@
+<%= form_with model: post do |form| %>
+  <div>
+    <%= form.label :title, "Título" %><br>
+    <%= form.text_field :title %>
+    <% @post.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :subtitle, "Subtitulo" %><br>
+    <%= form.text_field :subtitle %>
+    <% @post.errors.full_messages_for(:subtitle).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body, "Conteúdo" %><br>
+    <%= form.text_area :body  %>
+    <% @post.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit "Publicar" %>
+  </div>
+<% end %>
