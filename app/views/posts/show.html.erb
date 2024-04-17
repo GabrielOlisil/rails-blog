@@ -21,7 +21,7 @@
       <div class="container">
 
         <div class="row mb-4">
-          <%= @post.body %>
+          <%= simple_format(sanitize(@post.body, tags: %w(b strong em i)).html_safe) %>
         </div>
         <div class="row">
 

@@ -15,11 +15,11 @@ Things you may want to cover:
 
 ### TODO
 - [ ] Postagens basicas com comentarios
-- [ ] Paginação 
+- [X] Paginação 
 - [ ] Autenticação e Autorização
 - [ ] Editar informações do usuário
 - [ ] Deploy
-- [ ] Melhorar interface
+- [X] Melhorar interface
 - [ ] Testes
 - [ ] Internacionalização
 - [ ] Tags
