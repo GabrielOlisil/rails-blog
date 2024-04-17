@@ -4,8 +4,8 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Clean Blog</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <h1>Norah Blog</h1>
+          <span class="subheading">blog template</span>
         </div>
       </div>
     </div>
@@ -20,8 +20,8 @@
         <%= link_to(p) do %>
           <div class="post-preview">
             <div>
-              <h2 class="post-title"><%= p.title %></h2>
-              <h3 class="post-subtitle fw-lighter"><%= p.subtitle %></h3>
+              <h2 class="post-title text-break"><%= p.title %></h2>
+              <h3 class="post-subtitle fw-lighter text-break"><%= p.subtitle %></h3>
             </div>
 
             <p class="post-meta">
@@ -36,9 +36,12 @@
         <hr class="my-4"/>
       <% end %>
 
-      <%= paginate @posts %>
       <!-- Pager-->
-      <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase">Older Posts →</a></div>
+      <div class="mb-3 d-flex flex-row-reverse">
+
+        <%= paginate @posts %>
+
+      </div>
     </div>
   </div>
 </div>

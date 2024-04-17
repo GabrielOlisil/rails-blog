@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  has_many :comments
   before_save :sanitize_content
 
   validates :title, presence: true

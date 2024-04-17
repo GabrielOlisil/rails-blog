@@ -3,8 +3,8 @@
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
       <div class="post-heading">
-        <h1><%= @post.title %></h1>
-        <h2 class="subheading"><%= @post.subtitle %></h2>
+        <h1 class="text-break"><%= @post.title %></h1>
+        <h2 class="subheading text-break"><%= @post.subtitle %></h2>
         <span class="meta">
           Posted by <a h ref="#!">Start Bootstrap</a>on <%= @post.created_at.strftime('%d %B, %Y') %>
         </span>
@@ -20,9 +20,30 @@
 
       <div class="container">
 
-        <div class="row mb-4">
+        <div class="row mb-4 text-break">
           <%= simple_format(sanitize(@post.body, tags: %w(b strong em i)).html_safe) %>
         </div>
+        
+        <div class="row mb-4">
+          <h2>Comments</h2>
+          <%= render @post.comments %>
+        </div>
+
+        <div class="row mb-4">
+          <h2>Add a comment:</h2>
+          <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+            <p>
+              <%= form.label :body %><br>
+              <%= form.text_area :body %>
+            </p>
+            <p>
+              <%= form.submit %>
+            </p>
+          <% end %>
+        </div>
+
+
+
         <div class="row">
 
           <div class="col">
