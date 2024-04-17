@@ -1,4 +1,4 @@
-<header class="masthead"">
+<header class="masthead">
 <div class="container position-relative px-4 px-lg-5">
   <div class="row gx-4 gx-lg-5 justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -15,9 +15,29 @@
 </header>
 <!-- Post Content-->
 <article class="mb-4">
-  <div class="container px-4 px-lg-5">
+  <div class="container container-lg px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-      <%= @post.body %>
+
+      <div class="container">
+
+        <div class="row mb-4">
+          <%= @post.body %>
+        </div>
+        <div class="row">
+
+          <div class="col">
+            <%= link_to edit_post_path(@post) do %>
+              <button class="btn btn-primary w-100">Editar</button>
+            <% end %>
+          </div>
+
+          <div class="col">
+            <%= link_to  post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?"} do %>
+              <button class="btn btn-danger w-100">Excluir</button>
+            <% end %>
+          </div> 
+        </div>
+      </div>
     </div>
   </div>
 </article>

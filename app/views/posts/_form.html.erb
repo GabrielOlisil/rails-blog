@@ -1,28 +1,28 @@
 <%= form_with model: post do |form| %>
-  <div>
-    <%= form.label :title, "Título" %><br>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, "Título", class: "form-label" %><br>
+    <%= form.text_field :title, class:"form-control" %>
     <% @post.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
-  <div>
-    <%= form.label :subtitle, "Subtitulo" %><br>
-    <%= form.text_field :subtitle %>
+  <div class="mb-3">
+    <%= form.label :subtitle, "Subtitulo", class: "form-label" %><br>
+    <%= form.text_field :subtitle, class: "form-control" %>
     <% @post.errors.full_messages_for(:subtitle).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :body, "Conteúdo" %><br>
-    <%= form.text_area :body  %>
+  <div class="mb-3">
+    <%= form.label :body, "Conteúdo", class: "form-label" %><br>
+    <%= form.text_area :body, class:"form-control", style: "height: 25rem"  %>
     <% @post.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.submit "Publicar" %>
+  <div class="mb-3">
+    <%= form.submit "Publicar", class:"btn btn-primary text-uppercase" %>
   </div>
 <% end %>
