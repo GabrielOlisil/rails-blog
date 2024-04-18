@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+  before_action :authenticate!, except: [:index, :show]
+
+
   def index
     @posts = Post.order('created_at').page params[:page]
   end
