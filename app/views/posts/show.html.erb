@@ -1,17 +1,17 @@
-<header class="masthead">
-<div class="container position-relative px-4 px-lg-5">
-  <div class="row gx-4 gx-lg-5 justify-content-center">
-    <div class="col-md-10 col-lg-8 col-xl-7">
-      <div class="post-heading">
-        <h1 class="text-break"><%= @post.title %></h1>
-        <h2 class="subheading text-break"><%= @post.subtitle %></h2>
-        <span class="meta">
-           Posted by <span><%= @username %></span> on <%= @post.created_at.strftime('%d %B, %Y') %>
-        </span>
+<header class="container" style="height: 20rem">
+  <div class="row gap-0 justify-content-center h-100 align-items-center">
+    <div class="text-center fw-bolder">
+      <h1 class="text-break"><%= @post.title %></h1>
+      <div class="text-success">
+        <hr>
       </div>
+      <h2 class="text-break fw-lighter text-secondary"><%= @post.subtitle %></h2>
+    </div>
+
+    <div class="text-center text-light-emphasis fst-italic">
+           Posted by <span><%= @username %></span> on <%= @post.created_at.strftime('%d %B, %Y') %>
     </div>
   </div>
-</div>
 </header>
 <!-- Post Content-->
 <article class="mb-4">
@@ -23,7 +23,7 @@
         <div class="row mb-4 text-break">
           <%= simple_format(sanitize(@post.body, tags: %w(b strong em i)).html_safe) %>
         </div>
-        
+
         <div class="row mb-4">
           <h2>Comments</h2>
           <%= render @post.comments %>
@@ -31,7 +31,7 @@
 
         <div class="row mb-4">
           <h2>Add a comment:</h2>
-          <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+          <%= form_with model: [@post, @post.comments.build] do |form| %>
             <p>
               <%= form.label :body %><br>
               <%= form.text_area :body %>
@@ -42,7 +42,7 @@
           <% end %>
         </div>
 
-      
+
         <% if @user_owner %>
           <div class="row">
 
@@ -53,10 +53,10 @@
             </div>
 
             <div class="col">
-              <%= link_to  post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?"} do %>
+              <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" } do %>
                 <button class="btn btn-danger w-100">Excluir</button>
               <% end %>
-            </div> 
+            </div>
           </div>
         <% end %>
       </div>

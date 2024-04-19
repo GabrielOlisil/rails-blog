@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_170223) do
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
   end
 
-  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "posts", on_delete: :cascade
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
 end

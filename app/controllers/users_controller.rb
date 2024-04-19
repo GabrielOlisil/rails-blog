@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  layout "layouts/authentication"
+  layout 'layouts/authentication'
 
-  before_action :redirect_if_authenticated, only: [:create, :new]
+  before_action :redirect_if_authenticated, only: %i[create new]
 
   def create
     @user = User.create(user_params)

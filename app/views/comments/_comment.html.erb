@@ -1,12 +1,17 @@
+<div class="card mb-4" >
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= comment.user ? comment.user.username : "Anônimo" %>
+      diz:
 
-<div class="row mb-4">
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">
+      <%= comment.created_at.strftime('%d %B, %Y')%>
 
-  <p>
-  <em>Postado em :</em>
-  <%= comment.created_at.strftime('%d %B, %Y')%>
-  </p>
+    </h6>
+    <p class="card-text">
+      <%= comment.body %>
+    </p>
+  </div>
 </div>
+

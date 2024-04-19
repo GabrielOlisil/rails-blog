@@ -1,38 +1,33 @@
 <!-- Page Header-->
-<header class="masthead">
-  <div class="container position-relative px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="site-heading">
-          <h1>Norah Blog</h1>
-          <span class="subheading">blog template</span>
-        </div>
-      </div>
-    </div>
+<header class="container" style="height: 20rem">
+  <div class="row gap-0 justify-content-center h-100 align-items-center">
+        <h1 class="text-center titles" style="font-size: 5rem">G<span class="titles text-bold text-success">Blog</span></h1>
+        <span class="text-center">Seu web blog favorito</span>
   </div>
 </header>
 <!-- Main Content-->
-<div class="container px-4 px-lg-5">
-  <div class="row gx-4 gx-lg-5 justify-content-center">
-    <div class="col-md-10 col-lg-8 col-xl-7">
+<main class="container px-4 px-lg-5">
+  <article class="row gx-4 gx-lg-5 justify-content-center">
+    <section class="col-md-10 col-lg-8 col-xl-7">
       <!-- Post preview-->
       <% @posts.each do |p| %>
         <%= link_to(p) do %>
-          <div class="post-preview">
-            <div>
-              <h2 class="post-title text-break"><%= p.title %></h2>
-              <h3 class="post-subtitle fw-lighter text-break"><%= p.subtitle %></h3>
-            </div>
-
-            <p class="post-meta">
-              Posted by
-              <span>
+          <div class="card card-post-preview">
+            <div class="card-body">
+              <h5 class="card-title"><%= p.title %></h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary"><%= p.subtitle %></h6>
+              <p class="card-text">
+                Posted by
+                <span>
                 <%= p.user.username %>
               </span>
-              <%= p.created_at.strftime("%Y, %d de %B") %>
-            </p>
+                <%= p.created_at.strftime("%Y, %d de %B") %>
+              </p>
+            </div>
           </div>
         <% end %>
+
+
 
         <!-- Divider-->
         <hr class="my-4"/>
@@ -44,6 +39,6 @@
         <%= paginate @posts %>
 
       </div>
-    </div>
-  </div>
-</div>
+    </section>
+  </article>
+</main>
