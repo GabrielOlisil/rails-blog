@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-
-  before_action :authenticate!, except: [:index, :show]
-
+  before_action :authenticate!, except: %i[index show]
+  before_action :check_user, only: %i[edit destroy update]
 
   def index
     @posts = Post.order('created_at').page params[:page]
@@ -9,6 +8,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @username = User.find_by(id: @post.user_id).username
+
+    @user_owner = user_owner?
   end
 
   def new
@@ -17,7 +19,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    @post.user = current_user
     if @post.save
       redirect_to @post
     else
@@ -50,5 +52,23 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :subtitle, :body)
+  end
+
+  def check_user
+    return if user_owner?
+
+    redirect_to @post
+  end
+
+  def user_owner?
+    @post = Post.find(params[:id])
+
+    @user = current_user
+
+    return false unless @user
+
+    return true if @user.id == @post.user_id
+
+    false
   end
 end

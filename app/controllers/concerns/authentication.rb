@@ -17,12 +17,12 @@ module Authentication
   end
 
   def redirect_if_authenticated
-    redirect_to root_path, alert: "You are already logged in." if user_signed_in?
+    redirect_to root_path, alert: 'You are already logged in.' if user_signed_in?
   end
 
   def authenticate!
     store_location
-    redirect_to login_path, alert: "You must be authenticated" unless user_signed_in?
+    redirect_to login_path, alert: 'You must be authenticated' unless user_signed_in?
   end
 
   def remember(user)
@@ -44,7 +44,6 @@ module Authentication
                        cookies.permanent.encrypted[:remember_token].present?
                        User.find_by(remember_token: cookies.permanent.encrypted[:remember_token])
                      end
-
   end
 
   def store_location
@@ -55,3 +54,4 @@ module Authentication
     Current.user.present?
   end
 end
+
