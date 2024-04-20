@@ -9,7 +9,7 @@
     </div>
 
     <div class="text-center text-light-emphasis fst-italic">
-           Posted by <span><%= @username %></span> on <%= @post.created_at.strftime('%d %B, %Y') %>
+      Posted by <span><%= @username %></span> on <%= @post.created_at.strftime('%d %B, %Y') %>
     </div>
   </div>
 </header>
@@ -24,21 +24,22 @@
           <%= simple_format(sanitize(@post.body, tags: %w(b strong em i)).html_safe) %>
         </div>
 
+        <% unless @post.comments.empty? %>
+          <div class="row mb-4">
+            <h3 class="text-secondary">Comentários</h3>
+            <%= render @post.comments %>
+          </div>
+        <% end %>
         <div class="row mb-4">
-          <h2>Comments</h2>
-          <%= render @post.comments %>
-        </div>
-
-        <div class="row mb-4">
-          <h2>Add a comment:</h2>
+          <h3 class="text-secondary">Comente:</h3>
           <%= form_with model: [@post, @post.comments.build] do |form| %>
-            <p>
-              <%= form.label :body %><br>
-              <%= form.text_area :body %>
+            <p class="mb-3">
+              <%= form.label :body, "Comentario", class: "form-label" %><br>
+              <%= form.text_area :body, class: "form-control" %>
             </p>
-            <p>
-              <%= form.submit %>
-            </p>
+            <div class="d-flex justify-content-end">
+              <%= form.submit "Comentar", class: "btn btn-outline-primary" %>
+            </div>
           <% end %>
         </div>
 
@@ -48,13 +49,13 @@
 
             <div class="col">
               <%= link_to edit_post_path(@post) do %>
-                <button class="btn btn-primary w-100">Editar</button>
+                <button class="btn btn-success ">Editar</button>
               <% end %>
             </div>
 
             <div class="col">
               <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" } do %>
-                <button class="btn btn-danger w-100">Excluir</button>
+                <button class="btn btn-danger ">Excluir</button>
               <% end %>
             </div>
           </div>

@@ -1,21 +1,28 @@
-<!-- TODO Improve Interface -->
+<h1 class="text-center">Sign Up</h1>
+
 <%= form_with model: @user, url: sign_up_path do |form| %>
+
   <%= render "shared/form_errors", object: form.object %>
-  <div>
-    <%= form.label :username %>
-    <%= form.text_field :username, required: true %>
+
+  <div class="form-floating mb-3">
+    <%= form.text_field :username, required: true, class: "form-control", placeholder: "username"%>
+    <%= form.label :username  %>
   </div>
-  <div>
+  <div class="form-floating mb-3">
+    <%= form.email_field :email, required: true, class: "form-control", placeholder: "email" %>
     <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
   </div>
-  <div>
+  <div class="form-floating mb-3">
+    <%= form.password_field :password, required: true, class: "form-control", placeholder: "senha" %>
     <%= form.label :password %>
-    <%= form.password_field :password, required: true %>
   </div>
-  <div>
+  <div class="form-floating mb-3">
+    <%= form.password_field :password_confirmation, required: true, class: "form-control", placeholder: "confirme sua senha" %>
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, required: true %>
+
   </div>
-  <%= form.submit "Sign Up" %>
+
+  <%= form.submit "Sign Up", class: "btn btn-success" %>
+
+
 <% end %>
