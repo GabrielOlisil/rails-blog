@@ -14,10 +14,10 @@ Things you may want to cover:
 * Deployment instructions
 
 ### TODO
-- [ ] Postagens basicas com comentarios
+- [X] Postagens basicas com comentarios
 - [X] Paginação 
-- [ ] Autenticação e Autorização
-- [ ] Editar informações do usuário
+- [X] Autenticação e Autorização
+- [X] Editar informações do usuário
 - [ ] Deploy
 - [X] Melhorar interface
 - [ ] Testes
