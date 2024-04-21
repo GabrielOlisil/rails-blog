@@ -10,9 +10,15 @@ Rails.application.routes.draw do
 
   post "sign_up", to: "users#create"
   get "sign_up", to: "users#new"
+
   get "profile", to: "users#show"
   get "profile/edit", to: "users#edit"
   patch "profile/edit", to: "users#update"
+
+  get "password/edit", to: "users#edit_password"
+  patch "password/update", to: "users#update_password"
+
+  resources :passwords, only: [:create, :edit, :new, :update], param: :password_reset_token
 
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
