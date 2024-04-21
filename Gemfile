@@ -76,3 +76,4 @@ gem 'kaminari'
 gem 'loofah'
 
 gem 'mailcatcher'
+gem "dockerfile-rails", ">= 1.6", :group => :development
