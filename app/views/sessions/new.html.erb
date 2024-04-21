@@ -1,16 +1,25 @@
 <h1 class="text-center">Login</h1>
 <%= form_with url: login_path, scope: :user do |form| %>
   <div class="form-floating mb-3">
-    <%= form.email_field :email, required: true, class: "form-control", placeholder: "email"  %>
+    <%= form.email_field :email, required: true, class: "form-control", placeholder: "email" %>
     <%= form.label :email %>
   </div>
   <div class="form-floating mb-3">
     <%= form.password_field :password, required: true, class: "form-control", placeholder: "senha" %>
     <%= form.label :password %>
   </div>
-  <div class="form-check mb-3">
-    <%= form.label :remember_me, class: "form-check-label" %>
-    <%= form.check_box :remember_me, class: "form-check-input" %>
+  <div class="form-check mb-3 d-flex justify-content-between">
+    <div>
+
+      <%= form.label :remember_me, class: "form-check-label" %>
+      <%= form.check_box :remember_me, class: "form-check-input" %>
+    </div>
+    <%= link_to "Forgot Password?", new_password_path %>
   </div>
-  <%= form.submit "Login", class: "btn btn-success" %>
+  <div class="mb-3">
+  </div>
+  <div class="d-flex justify-content-end">
+    <%= form.submit "Login", class: "btn btn-success" %>
+  </div>
+
 <% end %>

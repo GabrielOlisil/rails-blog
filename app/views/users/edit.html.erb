@@ -6,7 +6,7 @@
 </header>
 
 <main class="container col-3">
-  <%= form_with model: @user, url: profile_edit_path, method: :patch do |form| %>
+  <%= form_with model: @user, url: password_update_path, method: :patch do |form| %>
     <%= render "shared/form_errors", object: form.object %>
 
     <div class="form-floating mb-3">

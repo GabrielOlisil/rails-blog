@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   before_action :authenticate!, except: %i[create new]
 
   def create
-    @user = User.create(user_params)
+    @user = User.create(user_params.except(:old_password))
 
     if @user.save
-      redirect_to root_path
+      redirect_to login_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
 
-    if @user.update(update_user_params)
+    if @user.update(user_params.except(:password, :password_confirmation))
       redirect_to profile_path
       return
     end
@@ -37,13 +37,39 @@ class UsersController < ApplicationController
     render :edit, status: :unprocessable_entity
   end
 
+  def edit_password
+    @user = current_user
+  end
+
+  def update_password
+    unless params[:user][:old_password].present?
+      flash.now[:alert] = 'Incorrect old password'
+      render :edit_password, status: :forbidden
+      return
+    end
+
+    @user = current_user
+
+    unless @user.authenticate(params[:user][:old_password])
+      flash.now[:alert] = 'Password doesn\'t matches'
+      render :edit_password, status: :forbidden
+      return
+    end
+
+    if @user.update(user_params.except(:old_password))
+      redirect_to profile_path
+    else
+      render :edit_password, status: :unprocessable_entity
+    end
+
+  end
+
   private
 
   def user_params
+    if params[:user][:old_password].present?
+      return params.require(:user).permit(:username, :email, :password, :password_confirmation, :old_password)
+    end
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def update_user_params
-    params.require(:user).permit(:username, :email)
   end
 end

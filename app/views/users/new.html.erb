@@ -5,8 +5,8 @@
   <%= render "shared/form_errors", object: form.object %>
 
   <div class="form-floating mb-3">
-    <%= form.text_field :username, required: true, class: "form-control", placeholder: "username"%>
-    <%= form.label :username  %>
+    <%= form.text_field :username, required: true, class: "form-control", placeholder: "username" %>
+    <%= form.label :username %>
   </div>
   <div class="form-floating mb-3">
     <%= form.email_field :email, required: true, class: "form-control", placeholder: "email" %>
@@ -22,7 +22,10 @@
 
   </div>
 
-  <%= form.submit "Sign Up", class: "btn btn-success" %>
+  <div class="d-flex justify-content-end">
+    <%= form.submit "Sign Up", class: "btn btn-success" %>
+  </div>
+
 
 
 <% end %>
