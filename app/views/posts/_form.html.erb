@@ -1,13 +1,13 @@
 <%= form_with model: post do |form| %>
   <div class="mb-3">
-    <%= form.label :title, "Título", class: "form-label" %><br>
+    <%= form.label :title, t("posts.post_title"), class: "form-label" %><br>
     <%= form.text_field :title, class:"form-control" %>
     <% @post.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div class="mb-3">
-    <%= form.label :subtitle, "Subtitulo", class: "form-label" %><br>
+    <%= form.label :subtitle, t("posts.post_subtitle"), class: "form-label" %><br>
     <%= form.text_field :subtitle, class: "form-control" %>
     <% @post.errors.full_messages_for(:subtitle).each do |message| %>
       <div><%= message %></div>
@@ -15,7 +15,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :body, "Conteúdo", class: "form-label" %><br>
+    <%= form.label :body, t("posts.post_body"), class: "form-label" %><br>
     <%= form.text_area :body, class:"form-control", style: "height: 25rem"  %>
     <% @post.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>

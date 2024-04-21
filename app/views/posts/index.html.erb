@@ -2,7 +2,7 @@
 <header class="container" style="height: 20rem">
   <div class="row gap-0 justify-content-center h-100 align-items-center">
         <h1 class="text-center titles" style="font-size: 5rem">G<span class="titles text-bold text-success">Blog</span></h1>
-        <span class="text-center">Seu web blog favorito</span>
+        <span class="text-center"><%= t'.subtitle' %></span>
   </div>
 </header>
 <!-- Main Content-->
@@ -17,11 +17,11 @@
               <h5 class="card-title"><%= p.title %></h5>
               <h6 class="card-subtitle mb-2 text-body-secondary"><%= p.subtitle %></h6>
               <p class="card-text">
-                Posted by
+                <%= t'.posted_by' %>
                 <span>
                 <%= p.user.username %>
               </span>
-                <%= p.created_at.strftime("%Y, %d de %B") %>
+                <%= l(p.created_at, format: "%B %e, %Y").capitalize %>
               </p>
             </div>
           </div>

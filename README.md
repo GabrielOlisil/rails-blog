@@ -18,11 +18,11 @@ Things you may want to cover:
 - [X] Paginação 
 - [X] Autenticação e Autorização
 - [X] Editar informações do usuário
-- [ ] Deploy
+- [X] Deploy
 - [X] Melhorar interface
 - [ ] Testes
 - [ ] Internacionalização
 - [ ] Tags
 - [ ] Upload de arquivos txt para bulk insert, usando sedekiq para processamento assincrono
-- [ ] cache "se sobrar tempo"
+
 

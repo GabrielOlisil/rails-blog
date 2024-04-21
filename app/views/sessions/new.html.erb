@@ -1,25 +1,25 @@
-<h1 class="text-center">Login</h1>
+<h1 class="text-center"><%= t'.title' %></h1>
 <%= form_with url: login_path, scope: :user do |form| %>
   <div class="form-floating mb-3">
-    <%= form.email_field :email, required: true, class: "form-control", placeholder: "email" %>
-    <%= form.label :email %>
+    <%= form.email_field :email, required: true, class: "form-control", placeholder: t("email") %>
+    <%= form.label :email, t("email") %>
   </div>
   <div class="form-floating mb-3">
-    <%= form.password_field :password, required: true, class: "form-control", placeholder: "senha" %>
-    <%= form.label :password %>
+    <%= form.password_field :password, required: true, class: "form-control", placeholder: t("password") %>
+    <%= form.label :password, t("password") %>
   </div>
   <div class="form-check mb-3 d-flex justify-content-between">
     <div>
 
-      <%= form.label :remember_me, class: "form-check-label" %>
+      <%= form.label :remember_me, t('.remember'), class: "form-check-label" %>
       <%= form.check_box :remember_me, class: "form-check-input" %>
     </div>
-    <%= link_to "Forgot Password?", new_password_path %>
+    <%= link_to t(".forgot"), new_password_path %>
   </div>
   <div class="mb-3">
   </div>
   <div class="d-flex justify-content-end">
-    <%= form.submit "Login", class: "btn btn-success" %>
+    <%= form.submit t(".submit"), class: "btn btn-success" %>
   </div>
 
 <% end %>

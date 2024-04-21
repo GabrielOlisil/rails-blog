@@ -9,7 +9,8 @@
     </div>
 
     <div class="text-center text-light-emphasis fst-italic">
-      Posted by <span><%= @username %></span> on <%= @post.created_at.strftime('%d %B, %Y') %>
+      <%= t '.posted_by' %>
+      <span><%= @username %></span> <%= t'.time_publication' %> <%= l(@post.created_at, format: "%B %e, %Y").capitalize %>
     </div>
   </div>
 </header>
@@ -26,38 +27,32 @@
 
         <% unless @post.comments.empty? %>
           <div class="row mb-4">
-            <h3 class="text-secondary">Comentários</h3>
+            <h3 class="text-secondary"><%= t '.comments' %></h3>
             <%= render @post.comments %>
           </div>
         <% end %>
         <div class="row mb-4">
-          <h3 class="text-secondary">Comente:</h3>
           <%= form_with model: [@post, @post.comments.build] do |form| %>
             <p class="mb-3">
-              <%= form.label :body, "Comentario", class: "form-label" %><br>
+              <%= form.label :body, t('.comment'), class: "form-label" %><br>
               <%= form.text_area :body, class: "form-control" %>
             </p>
             <div class="d-flex justify-content-end">
-              <%= form.submit "Comentar", class: "btn btn-outline-primary" %>
+              <%= form.submit t('.comment'), class: "btn btn-outline-primary" %>
             </div>
           <% end %>
         </div>
 
 
         <% if @user_owner %>
-          <div class="row">
+          <div class="d-flex justify-content-between mb-3 gap-5">
 
-            <div class="col">
-              <%= link_to edit_post_path(@post) do %>
-                <button class="btn btn-success ">Editar</button>
-              <% end %>
-            </div>
+            <%= link_to t('.edit'), edit_post_path(@post), class: "btn btn-primary flex-grow-1" %>
 
-            <div class="col">
-              <%= link_to post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" } do %>
-                <button class="btn btn-danger ">Excluir</button>
-              <% end %>
-            </div>
+
+            <%= link_to t('.destroy'), post_path(@post), data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" }, class: "btn btn-danger flex-grow-1" %>
+
+
           </div>
         <% end %>
       </div>

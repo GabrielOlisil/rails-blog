@@ -13,31 +13,31 @@
 <body>
 <!-- Navigation-->
 
-<nav class="navbar bg-success navbar-expand-lg" data-bs-theme="dark">
+<nav class="navbar bg-success navbar-expand-lg mb-3" data-bs-theme="dark">
   <div class="container-fluid d-flex flex-justify-between">
     <%= link_to "Gblog", root_path, class: "navbar-brand" %>
     <div class="">
       <ul class="navbar-nav me-auto py-4 py-lg-0">
+
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Publicar", new_post_path, class: "nav-link" %>
+            <%= link_to t(".post"), new_post_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to t(".profile"), profile_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
             <%= link_to "Logout", logout_path, data: { turbo_method: :delete }, class: "nav-link" %>
           </li>
 
-          <li class="nav-item">
-            <%= link_to "Profile", profile_path, class: "nav-link" %>
-          </li>
-
-
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", login_path, class: "nav-link" %>
+            <%= link_to t("layouts.sign_in"), login_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign-up", sign_up_path, class: "nav-link" %>
+            <%= link_to t("layouts.sign_up"), sign_up_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
@@ -45,19 +45,20 @@
   </div>
 </nav>
 
+<div class="container-lg d-flex flex-row-reverse">
+
+  <div>
+    <p><%= t('layouts.lang') %>: <%= locale %></p>
+
+    <% unless locale == :en %>
+      <%= link_to t('layouts.change_lang'), url_for(locale: :en), class: "btn btn-outline-primary" %>
+    <% else %>
+      <%= link_to t('layouts.change_lang'), url_for(locale: :'pt-BR'), class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
+
+</div>
 
 <%= yield %>
 
-<!-- Footer
-<footer class="border-top">
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-md-10 col-lg-8 col-xl-7">
-        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
-      </div>
-    </div>
-  </div>
-</footer>
-</body>
-</html>
--->
+

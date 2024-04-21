@@ -1,7 +1,7 @@
 <header class="container" style="height: 20rem">
   <div class="row gap-0 justify-content-center h-100 align-items-center">
     <h1 class="text-center text-uppercase"><%= @user.username %></h1>
-    <p class="text-center">Alterando suas informações</p>
+    <p class="text-center"><%= t'.title' %></p>
   </div>
 </header>
 
@@ -10,16 +10,16 @@
     <%= render "shared/form_errors", object: form.object %>
 
     <div class="form-floating mb-3">
-      <%= form.text_field :username, required: true, class: "form-control", placeholder: "username" %>
-      <%= form.label :username %>
+      <%= form.text_field :username, required: true, class: "form-control", placeholder: t("user") %>
+      <%= form.label :username, t("user") %>
     </div>
     <div class="form-floating mb-3">
-      <%= form.email_field :email, required: true, class: "form-control", placeholder: "email" %>
-      <%= form.label :email %>
+      <%= form.email_field :email, required: true, class: "form-control", placeholder: t("email") %>
+      <%= form.label :email, t('email') %>
     </div>
 
     <div class="mb-3 d-flex justify-content-end">
-      <%= form.submit "Salvar", class: "btn btn-success" %>
+      <%= form.submit t(".save"), class: "btn btn-success" %>
     </div>
   <% end %>
 </main>
