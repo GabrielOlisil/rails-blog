@@ -18,5 +18,6 @@ pt-BR:
   password_field: Senha
   old_password_field: Senha Atual
   password_confirmation_field: Confirme Sua Senha
+  recover_password: Recuperar Senha
 
 

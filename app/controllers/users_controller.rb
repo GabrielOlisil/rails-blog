@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'layouts/authentication', only: [:new]
+  layout 'layouts/authentication', only: [:new, :create]
 
   before_action :redirect_if_authenticated, only: %i[create new]
   before_action :authenticate!, except: %i[create new]

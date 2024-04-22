@@ -10,7 +10,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   has_secure_password
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
-  validates_presence_of :username, :password, :password_confirmation
+  validates_presence_of :username, :password, :password_confirmation, if: :new_record?
 
   def generate_password_reset_token
     signed_id expires_in: PASSWORD_RESET_TOKEN_EXPIRATION, purpose: :reset_password
