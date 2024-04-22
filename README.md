@@ -21,8 +21,8 @@ Things you may want to cover:
 - [X] Deploy
 - [X] Melhorar interface
 - [ ] Testes
-- [ ] Internacionalização
-- [ ] Tags
+- [X] Internacionalização
+- [X] Tags
 - [ ] Upload de arquivos txt para bulk insert, usando sedekiq para processamento assincrono
 
 
