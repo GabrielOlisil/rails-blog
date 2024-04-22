@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   has_many :comments
   belongs_to :user
+  belongs_to :tag
 
   before_save :sanitize_content
 
