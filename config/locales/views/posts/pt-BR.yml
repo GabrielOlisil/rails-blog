@@ -3,6 +3,8 @@ pt-BR:
     index:
       subtitle: Seu web blog favorito
       posted_by: Publicado por
+      filter: Filtrar
+      clean_filter: Limpar Filtro
     show:
       posted_by: Publicado por
       time_publication: em
@@ -16,6 +18,7 @@ pt-BR:
     post_title: Título
     post_subtitle: Subtítulo
     post_body: Conteúdo
+    post_tag: Tags
     new:
       title: Novo Post
       save: Publicar

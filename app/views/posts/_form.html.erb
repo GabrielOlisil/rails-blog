@@ -22,6 +22,14 @@
     <% end %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :tag_id, t("posts.post_tag"), class: "form-label" %><br>
+    <%= form.collection_select :tag_id, @tags, :id, :descryption, class: "form-select" %>
+    <% post.errors.full_messages_for(:tag_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
   <div class="mb-3 d-flex flex-row-reverse">
     <%= form.submit submit_message, class:"btn btn-primary text-uppercase" %>
   </div>

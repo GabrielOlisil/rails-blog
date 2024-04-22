@@ -3,7 +3,13 @@ class PostsController < ApplicationController
   before_action :check_user, only: %i[edit destroy update]
 
   def index
-    @posts = Post.order(created_at: :desc).page params[:page]
+    @tags = Tag.all
+
+    if params[:tag_id].present?
+      @posts = Post.where(tag_id: params[:tag_id]).order(created_at: :desc).page params[:page]
+    else
+      @posts = Post.order(created_at: :desc).page params[:page]
+    end
   end
 
   def show
@@ -15,9 +21,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tags = Tag.all
   end
 
   def create
+    logger.debug params[:post][:tag_id]
+
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
@@ -29,6 +38,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tags = Tag.all
   end
 
   def update
@@ -51,7 +61,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :subtitle, :body)
+    params.require(:post).permit(:title, :subtitle, :body, :tag_id)
   end
 
   def check_user

@@ -45,16 +45,20 @@
   </div>
 </nav>
 
-<div class="container-lg d-flex flex-row-reverse">
+<div class="container-lg d-flex ">
 
   <div>
-    <p><%= t('layouts.lang') %>: <%= locale %></p>
+    <p><%= t('layouts.lang') %>: <%= locale %>
 
-    <% unless locale == :en %>
-      <%= link_to t('layouts.change_lang'), url_for(locale: :en), class: "btn btn-outline-primary" %>
-    <% else %>
-      <%= link_to t('layouts.change_lang'), url_for(locale: :'pt-BR'), class: "btn btn-outline-primary" %>
-    <% end %>
+    </p>
+    <p>
+      <% unless locale == :en %>
+        <%= link_to t('layouts.change_lang'), url_for(locale: :en), class: "text-primary" %>
+      <% else %>
+        <%= link_to t('layouts.change_lang'), url_for(locale: :'pt-BR'), class: "text-primary" %>
+      <% end %>
+    </p>
+
   </div>
 
 </div>
