@@ -18,3 +18,4 @@ en:
   password_field: Password
   old_password_field: Current Password
   password_confirmation_field: Password Confirmation
+  recover_password: Recuperar Senha
